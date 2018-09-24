@@ -1,0 +1,68 @@
+{% load humanize math %}
+<h1>{{ car.name }}</h1>
+<p>{{ car.year }} {{ car.make }} {{ car.model }} as of {{ mileage.date | naturalday }} it had {{ mileage.miles }} miles on it.</p>
+<div class="row">
+<div class="col">
+Brakes: Tires: Wipers: Oil Change:
+</div>
+</div>
+  <div class="row">
+<div class="col">
+<h3>Fuel Log</h3>
+<table class="table table-hover">
+<thead class="thead-light">
+  <tr>
+    <th>Date</th>
+    <th>Gallons</th>
+    <th>Cost</th>
+    <th>Per Gal.</th>
+  </tr>
+</thead>
+  {%for fuel in fuel %}
+  <tr>
+    <td>{{ fuel.date }}</td>
+    <td>{{ fuel.gallons }}</td>
+    <td>${{ fuel.cost }}</td>
+    <td>${{ fuel.cost|div:fuel.gallons|floatformat:"2" }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+<div class="col">
+<h3>Service Log</h3>
+<table class="table table-hover">
+<thead class="thead-light">
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Cost</th>
+  </tr>
+</thead>
+  {%for service in service %}
+  <tr>
+    <td>{{ service.date }}</td>
+    <td><a href="{% url 'carcare:service' service.id %}">{{ service.description }}</a></td>
+    <td>${{ service.cost }}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+</div>
+<div class="col">
+<h3>Mileage Log</h3>
+<table class="table table-hover">
+<thead class="thead-light">
+  <tr>
+    <th>Date</th>
+    <th>Miles</th>
+  </tr>
+</thead>
+  {%for mileagelog in mileagelog %}
+  <tr>
+    <td>{{ mileagelog.date }}</td>
+    <td>{{ mileagelog.miles}}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+</div>

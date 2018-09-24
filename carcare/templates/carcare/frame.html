@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title>Car Care - {{ title }}</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
+  <style>
+  .wrapper {
+    margin: 0.5in;
+  }
+  </style>
+</head>
+<body>
+  {% include "./navbar.html" %}
+  <div class="wrapper">
+    <div id="content">
+      {% include module %}
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<h1>Garage</h1>
+<div class="row">
+  <div class="col">
+<table class="table table-light table-hover">
+<thead class="thead-light">
+  <tr>
+    <th>Car</th>
+    <th>Model</th>
+    <th>Mileage</th>
+  </tr>
+</thead>
+{% for car in car_list %}
+<tr>
+  <td><a href="{% url 'carcare:car' car.id %}">{{ car.name }}</a></td>
+  <td>{{ car.year }} {{ car.make }} {{ car.model }}</td>
+  <td>{{ car.miles }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<div class="col">
+  <p>Add Fuel</p>
+  <p>Add Service</p>
+</div>
+</div>

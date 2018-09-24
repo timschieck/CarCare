@@ -1,0 +1,23 @@
+<h1>Fuel Log</h1>
+<table class="table table-hover">
+<thead class="thead-light">
+  <tr>
+    <th scope="col">Date</th>
+    <th scope="col">Gallons</th>
+    <th scope="col">Cost</th>
+    <th scope="col">Car</th>
+    <th scope="col">Mileage</th>
+  </tr>
+</thead>
+<tbody>
+{% for fuel in fuel_list %}
+<tr>
+  <td>{{ fuel.date }}</td>
+  <td>{{ fuel.gallons }}</td>
+  <td>${{ fuel.cost }}</td>
+  <td><a href="{% url 'carcare:car' fuel.car.id %}">{{ fuel.car }}</a></td>
+  <td>{{ fuel.mileage }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
